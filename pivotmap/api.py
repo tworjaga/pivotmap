@@ -14,7 +14,8 @@ from typing import Any, Optional
 from uuid import UUID
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
-from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi.responses import JSONResponse, PlainTextResponse, Response
+
 
 from pivotmap.core.graph_builder import AttackGraph
 from pivotmap.core.scorer import PivotScorer
@@ -234,13 +235,14 @@ async def get_paths(
     }
 
 
-@app.get("/report")
+@app.get("/report", response_model=None)
 async def get_report(
     format: str = "markdown",
-) -> PlainTextResponse | JSONResponse:
+) -> Response:
     """
     Generate attack path report.
     """
+
     global _graph
 
     if _graph is None:
