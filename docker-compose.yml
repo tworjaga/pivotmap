@@ -1,0 +1,35 @@
+# PivotMap - Attack Path Intelligence Engine
+# Docker Compose configuration
+
+version: '3.8'
+
+services:
+  pivotmap:
+    build: .
+    container_name: pivotmap
+    ports:
+      - "8000:8000"
+    environment:
+      - PIVOTMAP_ENV=production
+      - PIVOTMAP_DB_URL=sqlite:///data/pivotmap.db
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Redis for background job processing
+  redis:
+    image: redis:7-alpine
+    container_name: pivotmap-redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

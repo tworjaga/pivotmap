@@ -102,9 +102,31 @@ The `start.bat` script will:
 - Install PivotMap in development mode
 - Display usage instructions
 
-### Method 4: Docker (Future)
+### Method 4: Docker
 
-Docker support is planned for containerized deployment.
+Run PivotMap in a containerized environment:
+
+```bash
+# Clone repository
+git clone https://github.com/tworjaga/pivotmap.git
+cd pivotmap
+
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Or build manually
+docker build -t pivotmap .
+
+# Run container
+docker run -p 8000:8000 -v ./data:/app/data pivotmap
+```
+
+Docker Compose includes:
+- PivotMap API server (port 8000)
+- Optional Redis for background jobs
+- Persistent data volumes
+- Health checks
+
 
 ### Verify Installation
 
