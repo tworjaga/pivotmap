@@ -110,5 +110,5 @@ Contributions welcome. Please follow conventional commits format.
 
 ## Contact
 
-- GitHub: https://github.com/tworjaga/pivotmap
+- GitHub: https://github.com/tworjaga
 - Telegram: @al7exy
