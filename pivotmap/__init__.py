@@ -5,4 +5,4 @@ From exposure to compromise.
 """
 
 __version__ = "0.1.0"
-__author__ = "PivotMap Contributors"
+__author__ = "tworjaga"

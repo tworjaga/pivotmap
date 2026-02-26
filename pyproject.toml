@@ -10,8 +10,9 @@ readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.12"
 authors = [
-    {name = "PivotMap Contributors"}
+    {name = "tworjaga", email = "tworjaga@users.noreply.github.com"}
 ]
+
 keywords = ["security", "pentesting", "attack-path", "vulnerability", "graph"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -82,3 +83,11 @@ warn_unused_configs = true
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
+
+[tool.hatch.publish.index]
+disable = true
+
+[project.urls]
+Homepage = "https://github.com/tworjaga/pivotmap"
+Repository = "https://github.com/tworjaga/pivotmap"
+Issues = "https://github.com/tworjaga/pivotmap/issues"
