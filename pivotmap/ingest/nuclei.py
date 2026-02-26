@@ -115,13 +115,14 @@ class NucleiParser:
 
         host: str = finding.get("host", "")
         ip: str = finding.get("ip", "")
-        port: int = finding.get("port", 0)
+        port: int = int(finding.get("port", 0)) if finding.get("port") else 0
 
         if not host and not ip:
             self.errors.append("Finding missing host and IP")
             return
 
         host_id: UUID = self._get_or_create_host(ip or host, finding)
+
         service_id: Optional[UUID] = None
 
         if port > 0:
